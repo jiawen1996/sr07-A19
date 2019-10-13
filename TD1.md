@@ -313,10 +313,6 @@ R2# conf t
  R2(config) #ip helper-address 10.0.50.3 R2(config) #int Fa0/0.40
  R2(config) #ip helper-address 10.0.50.3 R2(config)# end
  R2# write mem 
-
-Wilfried QUET wquet@utc.fr 27/09/2019 
-
-SR07 TD Architecture 1 22 / 22
  \- Les 2 clients et les 2 serveurs obtiennent des adresses IP du serveur Serveur-Infra- 
 
 Dist
