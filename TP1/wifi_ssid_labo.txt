@@ -1,0 +1,24 @@
+conf t
+dot11 ssid labo03
+   vlan 30
+   authentication open 
+   authentication key-management wpa version 2
+   mbssid guest-mode
+   wpa-psk ascii 0 azerty12345
+interface Dot11Radio0
+  encryption vlan 30 mode ciphers aes-ccm 
+  broadcast-key vlan 30 change 900
+  ssid labo03
+  mbssid
+  station-role root
+  no shutdown
+interface Dot11Radio1
+  encryption vlan 30 mode ciphers aes-ccm 
+  broadcast-key vlan 30 change 900
+  ssid labo03
+  mbssid
+  station-role root
+  no shutdown
+end
+wr
+

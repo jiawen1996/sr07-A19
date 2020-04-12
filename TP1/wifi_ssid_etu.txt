@@ -1,0 +1,20 @@
+conf t
+dot11 ssid etu03
+   vlan 40
+   authentication open eap eap_methods 
+   authentication key-management wpa version 2
+   mbssid guest-mode
+interface Dot11Radio0
+ encryption vlan 40 mode ciphers aes-ccm 
+ broadcast-key vlan 40 change 900
+ ssid etu03
+ mbssid  
+ no shut
+interface Dot11Radio1
+ encryption vlan 40 mode ciphers aes-ccm 
+ broadcast-key vlan 40 change 900
+ ssid etu03
+ mbssid  
+ no shut
+end
+wr

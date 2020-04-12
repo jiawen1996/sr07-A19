@@ -1,0 +1,30 @@
+conf t
+aaa new-model
+aaa group server radius rad_eap
+ server 10.0.50.3 auth-port 1812 acct-port 1813
+aaa group server radius rad_mac
+ server 10.0.50.3 auth-port 1812 acct-port 1813
+aaa group server radius rad_acct
+ server 10.0.50.3 auth-port 1812 acct-port 1813
+aaa authentication login eap_methods group rad_eap
+ip radius source-interface BVI1 
+radius-server attribute 32 include-in-access-req format %h
+radius-server host 10.0.50.3 auth-port 1812 acct-port 1813 key 0 sr07sr07
+radius-server vsa send authentication 
+radius-server vsa send accounting
+end
+write
+
+conf t
+aaa new-model
+no aaa group server radius rad_eap
+no aaa group server radius rad_mac
+no aaa group server radius rad_acct
+no aaa authentication login eap_methods group rad_eap
+ip radius source-interface BVI1 
+radius-server attribute 32 include-in-access-req format %h
+no radius-server host 10.0.10.3 auth-port 1812 acct-port 1813 key 0 sr07sr07
+radius-server vsa send authentication 
+radius-server vsa send accounting
+end
+write

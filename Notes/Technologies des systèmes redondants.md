@@ -63,3 +63,7 @@ Il permet les communications sur un réseau non-sûr
 chiffre des messages claires par la clé publique et déchiffre par la clé privée
 
 缺点：网警可以冒充张三发送给李四“网警的公钥”，而不是“张三的公钥”，那么当李四收到该公钥的时候，以为是张三的公钥就不假思索的使用该公钥加密了他的信息，然后毫不犹豫的将加密的密文发了过去，然后网警得意的笑了。
+
+# VRRP
+
+三个候选人必须存在在同一个VLAN（广播域）中，但是只

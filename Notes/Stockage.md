@@ -1,14 +1,26 @@
+# Block device
+
+### Block devices virtuels
+
+* 在物理块上加一个信息处理层
+* 维护应用和系统组件之间的兼容性
+
 # RAID
 
+1. 修复偶然的硬盘的材料性损坏
+2. 数据的高可用度
+3. 不丢失数据
+4. 高速读取
 
+RAID并不能预防数据的腐败，也不能go back，删了就是删了。
 
 * RAID0：数据写入的时候往ABCD里面同时写，所以IO速度很快
 
-* RAID1：把相同的数据同时写进两个盘里
+* RAID1：把相同的数据同时写进两个盘里，当原始数据繁忙时，可直接从镜像中读取数据。
 
 * RAID5：横向的是一个chunk，每一个chunk中有一个校验盘
 
-  ​			   坏了一个，速度就慢下来了
+  ​			   坏了一个，速度就慢下来了，因为要校验修复
 
 ![image-20191006214834861](../img/image-20191006214834861.png)
 
@@ -180,9 +192,27 @@ mount -o ro /dev/datavg/lv1-snap /mnt/lv1-snap #初衷是不希望破坏快照�
 6. 卸载snapshot
 7. lvremove -f snapshot
 
+# DAS Direct Attached Storage
+
+
+
+![image-20191105065548853](/Users/haida/Library/Application Support/typora-user-images/image-20191105065548853.png)
+
 # NAS Network Attached Storage
 
+NFS, FTP, SFTP...
+
+store对于各个连接他的部分的存储是有意识的
+
 主机通过Ethernet网访问存储数据
+
+en mode ficher
+
+## 好处
+
+* 方便了更新
+* 便于manipuler
+* 最大重用了现存的网络
 
 ## NFS
 
@@ -190,15 +220,19 @@ mount -o ro /dev/datavg/lv1-snap /mnt/lv1-snap #初衷是不希望破坏快照�
 
 ![image-20191011085026705](../img/image-20191011085026705.png)
 
+
+
+# SAN Storage Area Network
+
+主机通过fibre访问存储数据，或者iSCSI
+
 ## iSCSI
 
 可以同时解决存储空间问题，又能分担服务器压力
 
 基于block的数据访问协议
 
-# SAN Storage Area Network
-
-主机通过fibre访问存储数据
+target and initiator
 
 # MariaDB
 
